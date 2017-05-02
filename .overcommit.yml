@@ -1,0 +1,81 @@
+# Use this file to configure the Overcommit hooks you wish to use. This will
+# extend the default configuration defined in:
+# https://github.com/brigade/overcommit/blob/master/config/default.yml
+#
+# At the topmost level of this YAML file is a key representing type of hook
+# being run (e.g. pre-commit, commit-msg, etc.). Within each type you can
+# customize each hook, such as whether to only run it on certain files (via
+# `include`), whether to only display output if it fails (via `quiet`), etc.
+#
+# For a complete list of hooks, see:
+# https://github.com/brigade/overcommit/tree/master/lib/overcommit/hook
+#
+# For a complete list of options that you can use to customize hooks, see:
+# https://github.com/brigade/overcommit#configuration
+#
+# Uncomment the following lines to make the configuration take effect.
+
+CommitMsg:
+  # Constrains based on: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+  TextWidth:
+    enabled: true
+    description: 'Checking text width'
+    max_subject_width: 50
+    max_body_width: 72
+
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: ignore
+
+  EsLint:
+    enabled: true
+    flags: ['--format=compact']
+
+  Reek:
+    enabled: true
+    exclude:
+      - 'db/schema.rb'
+      - 'db/migrate/*.rb'
+      - 'spec/support/ideal_postcodes.rb'
+      - 'spec/support/sage_pay.rb'
+      - 'spec/support/twilio.rb'
+
+  RuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+    exclude:
+      - 'db/schema.rb'
+      - 'db/migrate/*.rb'
+      - 'spec/support/sage_pay.rb'
+      - 'spec/support/twilio.rb'
+      - 'Gemfile'
+
+  SlimLint:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+
+#
+#  TrailingWhitespace:
+#    exclude:
+#      - '**/db/structure.sql' # Ignore trailing whitespace in generated files
+#
+#PostCheckout:
+#  ALL: # Special hook name that customizes all hooks of this type
+#    quiet: true # Change all post-checkout hooks to only display output on failure
+#
+#  IndexTags:
+#    enabled: true # Generate a tags file with `ctags` each time HEAD changes
+
+# PrePush:
+#   ProtectedBranches:
+#     enabled: true
+#     description: 'Checking for illegal pushes to protected branches'
+#     branches: ['master']
+
+#   RSpec:
+#     enabled: true
+#     description: 'Running RSpec test suite'
+#     command: ['bundle', 'exec', 'rake parallel:spec']
+#     quiet: false

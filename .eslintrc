@@ -1,0 +1,24 @@
+{
+  "extends": ["airbnb", "plugin:jest/recommended"],
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "jest"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "import/extensions": ["error", "never"],
+    "dot-location": ["error", "object"],
+  },
+  "env": {
+    "jest/globals": true
+  }
+}
