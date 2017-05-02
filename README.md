@@ -161,7 +161,7 @@ Example [.eslintrc](/.eslintrc).
 
 ## React
 
-Functional components, etc.
+Functional components, ES6, etc.
 
 # How to use the style guides
 
@@ -191,7 +191,7 @@ terminal when you write code and verifies files through guard plugins: [Rubocop]
 
 The plugins need to be installed separately from a [bunch of options](https://github.com/guard/guard/wiki/Guard-Plugins).
 
-Example [Guardfile](/Guardfile) with Rubycritic, Rspec and Rubocop enabled.
+Example [Guardfile](/Guardfile) with Rubycritic, RSpec, Rubocop and Reek enabled. RSpec, Rubocop and Reek guards will output to the console while Rubycritic will generate a file that can be opened in the browser: **tmp/rubycritic/current_file.html**
 
 ## Editors
 
@@ -204,6 +204,8 @@ Rubocop can be installed through packages like [RuboCop](https://packagecontrol.
 ### Vim
 
 ### Atom
+
+### RubyMine
 
 # More Static Analysis
 
