@@ -224,5 +224,7 @@ gem install rubycritic
 rubycritic app lib
 ```
 
-There is also a [Guard plugin](https://github.com/whitesmith/guard-rubycritic) for Rubycritic allowing to run Reek, Flay and Flog while developing and getting
-to see any problems live to allow fixing them on the spot.
+There is also a [Guard plugin](https://github.com/whitesmith/guard-rubycritic)
+for Rubycritic allowing to run Reek, Flay and Flog while developing and getting
+to see any problems live to allow fixing them on the spot. Currently, the
+Rubycritic guard does not output to the console and only generates an HTML file.
