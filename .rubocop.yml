@@ -3,17 +3,33 @@ require: rubocop-rspec
 AllCops:
   DisplayStyleGuide: true
 
-Style/IndentArray:
-  EnforcedStyle: consistent
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
 
 Metrics/ClassLength:
   CountComments: false
-  Max: 250
+  Max: 200
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 20
 
 Rails:
   Enabled: true
 
 Rails/HasAndBelongsToMany:
+  Enabled: false
+
+RSpec/DescribedClass:
+  EnforcedStyle: explicit
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
   Enabled: false
 
 Rails/HttpPositionalArguments:
@@ -25,21 +41,20 @@ Style/AlignParameters:
 Style/BlockDelimiters:
   EnforcedStyle: semantic
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/DotPosition:
   EnforcedStyle: trailing
 
 Style/DoubleNegation:
   Enabled: false
 
-Metrics/BlockLength:
-  Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'
+Style/IndentArray:
+  EnforcedStyle: consistent
 
-Metrics/MethodLength:
-  CountComments: false  # count full line comments?
-  Max: 20
+Style/SymbolArray:
+  EnforcedStyle: brackets
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

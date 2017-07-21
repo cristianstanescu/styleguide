@@ -56,27 +56,11 @@ The full list of enabled *cops* is listed [here](https://github.com/bbatsov/rubo
 
 **Styles different than the Rubocop default:**
 
-- [Style/IndentArray](https://github.com/bbatsov/rubocop/blob/master/lib/rubocop/cop/style/indent_array.rb)
-
-  Use `consistent` which means that the indentation of the first element shall
-  always be relative to the first position of the line where the opening
-  bracket is.
-
-  ```ruby
-  array = [
-    :value
-  ]
-
-  and_in_a_method_call([
-    :no_difference
-  ])
-  ```
-
 - [Metrics/ClassLength](https://github.com/bbatsov/rubocop/blob/master/lib/rubocop/cop/metrics/class_length.rb)
 
   The default of 100 lines is probably based on  [Sandi Metz's
   recommendations](https://robots.thoughtbot.com/sandi-metz-rules-for-developers#100-line-classes) but it could be too drastic in many
-  cases. **250** excluding comments should allow more freedom though still
+  cases. **200** excluding comments should allow more freedom though still
   not violate the Single Responsibility Principle. 100 lines should still be
   the goal, Github also [recommends it](https://github.com/github/rubocop-github/blob/master/STYLEGUIDE.md).
 
@@ -122,6 +106,22 @@ The full list of enabled *cops* is listed [here](https://github.com/bbatsov/rubo
 
   Allowed as this can be considered a Ruby idiom.
 
+- [Style/IndentArray](https://github.com/bbatsov/rubocop/blob/master/lib/rubocop/cop/style/indent_array.rb)
+
+  Use `consistent` which means that the indentation of the first element shall
+  always be relative to the first position of the line where the opening
+  bracket is.
+
+  ```ruby
+  array = [
+    :value
+  ]
+
+  and_in_a_method_call([
+    :no_difference
+  ])
+  ```
+
 - [Metrics/MethodLength](https://github.com/bbatsov/rubocop/blob/master/lib/rubocop/cop/metrics/method_length.rb)
 
   [Sandi Metz's   recommendations](https://robots.thoughtbot.com/sandi-metz-rules-for-developers#five-lines-per-method) recommends 5, Rubocop default was 10,
@@ -138,7 +138,7 @@ Also Enabled through [Rubocop](https://github.com/bbatsov/rubocop "Rubocop's Git
 
     `has_and_belongs_to_many` should be fine in most cases. `has_many :through`
     can have a semantic value communicating that the many to many association
-    is not just a cross reference but something more intersting is going on
+    is not just a cross reference but something more interesting is going on
     there.
 
 - [Rails/HttpPositionalArguments](https://github.com/bbatsov/rubocop/blob/master/lib/rubocop/cop/rails/http_positional_arguments.rb)
@@ -155,13 +155,18 @@ Also Enabled through [Rubocop](https://github.com/bbatsov/rubocop "Rubocop's Git
 
 - Order controller contents: filters, public methods, private methods.
 
+**Tests**
+
+[rubocop-rspec](https://github.com/backus/rubocop-rspec) is also enabled to provide a way of having tests that respect best practices but also a common
+approach throught the project.
+
 ## JavaScript
 
 Example [.eslintrc](/.eslintrc).
 
 ## React
 
-Functional components, ES6, etc.
+_TBD_ Functional components, ES6, etc.
 
 # How to use the style guides
 
@@ -182,6 +187,14 @@ enforcing a standard format: message subject line of 50 chars, body length of
 72, configurable but according to recommendations, one of most cited being [Tim Pope](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
 
 Example [.overcommit.yml](/.overcommit.yml).
+
+**Best friends (do not abuse) when using Overcommit:**
+
+```
+SKIP=TrailingWhitespace git commit
+ONLY=RuboCop git commit
+OVERCOMMIT_DISABLE=1 git commit
+```
 
 ## Guard
 
